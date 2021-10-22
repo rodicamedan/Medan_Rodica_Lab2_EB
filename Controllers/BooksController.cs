@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Medan_Rodica_Lab2_EB.Data;
 using Medan_Rodica_Lab2_EB.Models;
+using Medan_Rodica_Lab2_EB.Models.LibraryViewModels;
 
 namespace Medan_Rodica_Lab2_EB.Controllers
 {
@@ -149,5 +150,9 @@ namespace Medan_Rodica_Lab2_EB.Controllers
         {
             return _context.Books.Any(e => e.ID == id);
         }
+        
     }
+
+
+
 }
