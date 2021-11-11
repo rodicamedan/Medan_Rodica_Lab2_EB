@@ -19,7 +19,6 @@
         @foreach (var item in Model.Publishers)
         {
             string selectedRow = "";
-
             if (item.ID == (int?)ViewData["PublisherID"])
             {
                 selectedRow = "success";
@@ -31,7 +30,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Adress)
                 </td>
-
                 <td>
                     @{
                         foreach (var book in item.PublishedBooks)
@@ -50,6 +48,7 @@
         }
     </tbody>
 </table>
+
 @if (Model.Books != null)
 {
     <h3>Books Published by Selected Publisher</h3>
@@ -84,6 +83,7 @@
         }
     </table>
 }
+
 @if (Model.Orders != null)
 {
     <h3>

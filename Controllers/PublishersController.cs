@@ -197,7 +197,7 @@ namespace Medan_Rodica_Lab2_EB.Controllers
                 }
             }
         }
-    
+
 
         // GET: Publishers/Delete/5
         public async Task<IActionResult> Delete(int? id)
