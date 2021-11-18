@@ -24,7 +24,10 @@ namespace Medan_Rodica_Lab2_EB.Controllers
         {
             return View();
         }
-
+        public IActionResult Chat()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

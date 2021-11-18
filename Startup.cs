@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Medan_Rodica_Lab2_EB.Data;
 using Microsoft.EntityFrameworkCore;
+using Medan_Rodica_Lab2_EB.Hubs;
 namespace Medan_Rodica_Lab2_EB
 {
     public class Startup
@@ -27,6 +28,7 @@ namespace Medan_Rodica_Lab2_EB
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,8 @@ namespace Medan_Rodica_Lab2_EB
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chathub");
+
             });
         }
     }
