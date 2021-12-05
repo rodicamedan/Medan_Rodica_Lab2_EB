@@ -25,9 +25,10 @@ namespace Medan_Rodica_Lab2_EB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // services.AddMvc();
+      
             services.AddControllersWithViews();
-            services.AddDbContext<LibraryContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<LibraryContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSignalR();
         }
 
@@ -48,6 +49,7 @@ namespace Medan_Rodica_Lab2_EB
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -57,6 +59,7 @@ namespace Medan_Rodica_Lab2_EB
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapHub<ChatHub>("/chathub");
+                endpoints.MapRazorPages();
 
             });
         }

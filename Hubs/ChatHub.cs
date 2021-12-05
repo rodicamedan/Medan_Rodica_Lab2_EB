@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.OData.Edm;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Medan_Rodica_Lab2_EB.Hubs
 {
+    [Authorize]
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string user, string name, string message)
+        public async Task SendMessage(string user, string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, name, message);
+            await Clients.All.SendAsync("ReceiveMessage", Context.User.Identity.Name, message);
         }
        
     }
