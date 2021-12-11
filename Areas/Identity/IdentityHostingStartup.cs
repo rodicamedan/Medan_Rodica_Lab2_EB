@@ -18,9 +18,13 @@ namespace Medan_Rodica_Lab2_EB.Areas.Identity
                 services.AddDbContext<IdentityContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
+                services.AddDefaultIdentity<IdentityUser>(options =>
+                    options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                        .AddEntityFrameworkStores<IdentityContext>();
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<IdentityContext>();
+               // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                  //  .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }

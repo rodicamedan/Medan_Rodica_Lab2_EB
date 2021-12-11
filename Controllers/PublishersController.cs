@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Medan_Rodica_Lab2_EB.Data;
 using Medan_Rodica_Lab2_EB.Models;
 using Medan_Rodica_Lab2_EB.Models.LibraryViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Medan_Rodica_Lab2_EB.Controllers
 {
+    [Authorize(Policy = "OnlySales")]
     public class PublishersController : Controller
     {
         private readonly LibraryContext _context;
